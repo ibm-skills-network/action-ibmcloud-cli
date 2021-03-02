@@ -16,13 +16,13 @@ inputs:
     required: false
   ibm-cloud-cli-plugins:
     description: >-
-      IBM Cloud CLI Plugins. A comma-seperate list of plugins. e.g. kubernetes-service,container-registry
+      IBM Cloud CLI Plugins. A comma-seperate list of plugins.
     required: false
 
 runs:
   using: "composite"
   steps:
-    - run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+    - run: curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
       shell: bash
     - run: ibmcloud login --apikey "${{ inputs.ibm-cloud-api-key }}" -r "${{ inputs.ibm-cloud-region }}"
       shell: bash
