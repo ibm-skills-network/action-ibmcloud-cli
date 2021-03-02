@@ -1,0 +1,30 @@
+name: "Configure IBM Cloud CLI Action For GitHub Actions"
+description: "Configure IBM Cloud credentials for use with the IBM Cloud CLI"
+branding:
+  icon: "cloud"
+  color: "blue"
+
+inputs:
+  ibm-cloud-api-key:
+    description: >-
+      IBM Cloud Api Key. This input is required to interact with the IBM Cloud CLI.
+    required: true
+  ibm-cloud-region:
+    description: >-
+      IBM Cloud Region. e.g. us-south
+    default: "us-south"
+    required: false
+  ibm-cloud-cli-plugins:
+    description: >-
+      IBM Cloud CLI Plugins. A comma-seperate list of plugins. e.g. kubernetes-service,container-registry
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+      shell: bash
+    - run: ibmcloud login --apikey "${{ inputs.ibm-cloud-api-key }}" -r "${{ inputs.ibm-cloud-region }}"
+      shell: bash
+    - run: ${{ github.action_path }}/install_plugins.sh "${{ inputs.ibm-cloud-cli-plugins }}"
+      shell: bash
