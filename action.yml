@@ -5,6 +5,11 @@ branding:
   color: "blue"
 
 inputs:
+  ibm-cloud-cli-version:
+    description: >-
+      IBM Cloud CLI Version
+    default: "2.1.1"
+    required: false
   ibm-cloud-api-key:
     description: >-
       IBM Cloud Api Key. This input is required to interact with the IBM Cloud CLI.
@@ -22,7 +27,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
+    - run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
       shell: bash
     - run: ibmcloud login --apikey "${{ inputs.ibm-cloud-api-key }}" -r "${{ inputs.ibm-cloud-region }}"
       shell: bash

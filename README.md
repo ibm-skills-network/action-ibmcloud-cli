@@ -10,5 +10,5 @@ Add the following to your workflow
       with:
         ibm-cloud-api-key: ${{ secrets.IBM_CLOUD_API_KEY }}
         ibm-cloud-region: us-south
-        ibm-cloud-cli-plugins: kubernetes-service,container-registry
+        ibm-cloud-cli-plugins: container-service,container-registry
 ```
