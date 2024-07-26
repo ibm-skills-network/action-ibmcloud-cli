@@ -5,14 +5,9 @@ branding:
   color: "blue"
 
 inputs:
-  ibm-cloud-cli-version:
-    description: >-
-      IBM Cloud CLI Version
-    default: "2.1.1"
-    required: false
   ibm-cloud-api-key:
     description: >-
-      IBM Cloud Api Key. This input is required to interact with the IBM Cloud CLI.
+      IBM Cloud API Key. This input is required to interact with the IBM Cloud CLI.
     required: true
   ibm-cloud-region:
     description: >-
@@ -21,7 +16,7 @@ inputs:
     required: false
   ibm-cloud-cli-plugins:
     description: >-
-      IBM Cloud CLI Plugins. A comma-seperate list of plugins.
+      IBM Cloud CLI Plugins. A comma-separated list of plugins.
     required: false
 
 runs:
